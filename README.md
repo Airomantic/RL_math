@@ -39,12 +39,12 @@ The estimate of $V^\pi(S_{t+1})$ eventually converges to the value function of t
 ## Q_learning robot grib
 ![](TemporalDifference/robot_move.png)
 
-```mermaid
+# https://mermaid.live/
 graph TD
 A[TD algorithm to estimate the state-value function] -->|ponder ...| B(Whether reinforcement learning can be carried out by similar Policy iteration methods)
 B --> C{Policy evaluation ?}
 C -->|Yes| D[Directly using the temporal difference algorithm to estimate the action value function Q]
-```
+
 $$arg max_a Q(s_t, a_t) \gets Q(s_t, a_t) + \alpha [r_t + \gamma Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t] $$
 
 ```mermaid
