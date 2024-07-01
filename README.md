@@ -39,7 +39,8 @@ The estimate of $V^\pi(S_{t+1})$ eventually converges to the value function of t
 ## Q_learning robot grib
 ![](TemporalDifference/robot_move.png)
 
-# https://mermaid.live/
+https://kroki.io/
+
 graph TD
 A[TD algorithm to estimate the state-value function] -->|ponder ...| B(Whether reinforcement learning can be carried out by similar Policy iteration methods)
 B --> C{Policy evaluation ?}
@@ -47,11 +48,11 @@ C -->|Yes| D[Directly using the temporal difference algorithm to estimate the ac
 
 $$arg max_a Q(s_t, a_t) \gets Q(s_t, a_t) + \alpha [r_t + \gamma Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t] $$
 
-```mermaid
+
 graph TD
 A[Use greedy algorithms to interact with the environment based on action value-MAX] -->|get data| B(Updating action value estimation using temporal difference algorithm)
 B --> D[Divide into two consideration scenarios]
-```
+
 
 Policy promotion without knowing the reward function and state transition function:
 1. Policy promotion can be carried out when the policy evaluation is not fully carried out --- **generalized policy iteration**.
