@@ -31,9 +31,9 @@ $$\because G_t = \sum_{k = 0}^{\infty} \gamma^{k} R_{t+k}$$
 
 $$V^\pi (s) = E_\pi [G_t | S_t = s]$$
 
-$$E_\pi [R_t + \gamma \sum_{k = 0}^{\infty} \gamma^{k} R_{t+k+1} | S_t = s]$$
+$$= E_\pi [R_t + \gamma \sum_{k = 0}^{\infty} \gamma^{k} R_{t+k+1} | S_t = s]$$
 
-$$E_\pi [R_t + \gamma V^\pi(S_{t+1}) | S_t = s]$$
+$$= E_\pi [R_t + \gamma V^\pi(S_{t+1}) | S_t = s]$$
 
 The estimate of $V^\pi(S_{t+1})$ eventually converges to the value function of the policy π.
 ## Q_learning robot grib
