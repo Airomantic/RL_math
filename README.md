@@ -48,10 +48,11 @@ C -->|Yes| D[Directly using the temporal difference algorithm to estimate the ac
 
 $$arg max_a Q(s_t, a_t) \gets Q(s_t, a_t) + \alpha [r_t + \gamma Q(s_{t+1}, a_{t+1}) - Q(s_t, a_t] $$
 
-#### Consider solutions
+```mermaid
 graph TD
 A[Use greedy algorithms to interact with the environment based on action value-MAX] -->|get data| B(Updating action value estimation using temporal difference algorithm)
 B --> D[Divide into two consideration scenarios]
+```
 
 
 Policy promotion without knowing the reward function and state transition function:
