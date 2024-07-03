@@ -71,3 +71,10 @@ Policy promotion without knowing the reward function and state transition functi
 
 ## Q_learning
 ![](TemporalDifference/Q_learning_cumulativeReward.png)
+
+
+## DQN CartPole-v1 reward
+![](DQN/DQN_CartPole-v1_reward.png)
+
+## DQN CartPole-v1 reward with moving average
+![](DQN/DQN_CartPole-v1_reward_moving_average.png)
