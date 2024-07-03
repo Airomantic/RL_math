@@ -80,3 +80,6 @@ Policy promotion without knowing the reward function and state transition functi
 ![](DQN/DQN_CartPole-v1_reward_moving_average.png)
 
 CNN for image recognition which can refer to https://arxiv.org/abs/1312.5602
+
+## multi-agent reinforcement learning and paper
+Refer to [Multi-Agent Transfer Learning via Temporal Contrastive Learning](https://www.ri.cmu.edu/publications/multi-agent-transfer-learning-via-temporal-contrastive-learning/), [[paper pdf]](https://www.ri.cmu.edu/app/uploads/2024/06/2024_ICRA_MAD_workshop.pdf)
