@@ -84,8 +84,8 @@ CNN for image recognition which can refer to https://arxiv.org/abs/1312.5602
 ## multi-agent reinforcement learning and paper
 Refer to [Multi-Agent Transfer Learning via Temporal Contrastive Learning](https://www.ri.cmu.edu/publications/multi-agent-transfer-learning-via-temporal-contrastive-learning/), [[paper pdf]](https://www.ri.cmu.edu/app/uploads/2024/06/2024_ICRA_MAD_workshop.pdf)
 
-### 
-
+### fully centralized: IPPO, independent PPO-Clip
+![](MARL/MARL_IPPOonCombat_win_cumulativeReward.png)
 ### centralized training with decentralized execution, CTDE (Advanced paradigm)
 #### multi-agent DDPG (Based on Actor-Critic method)
 All agents share a centralized Critic network，which is provide guidance to each agent's Actor network during the training process. When executed, the Actor network of each agent acts completely independently.
