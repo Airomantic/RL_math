@@ -83,3 +83,39 @@ CNN for image recognition which can refer to https://arxiv.org/abs/1312.5602
 
 ## multi-agent reinforcement learning and paper
 Refer to [Multi-Agent Transfer Learning via Temporal Contrastive Learning](https://www.ri.cmu.edu/publications/multi-agent-transfer-learning-via-temporal-contrastive-learning/), [[paper pdf]](https://www.ri.cmu.edu/app/uploads/2024/06/2024_ICRA_MAD_workshop.pdf)
+
+### 
+
+### centralized training with decentralized execution, CTDE (Advanced paradigm)
+#### multi-agent DDPG (Based on Actor-Critic method)
+All agents share a centralized Critic network，which is provide guidance to each agent's Actor network during the training process. When executed, the Actor network of each agent acts completely independently.
+
+Application scenario of the CTDE algorithm:
+* Modeled as a partially observable Markov game
+S: State space (Global information)
+$A_i$ : The action space of each agent i
+$Q_i$ ：Observation space
+$\pi_i$ : Each agent's policy
+$Q_i \times A_i \to [0, 1]$ is a probability distribution, it is used to represent the probability that the agent will take each action under each observation.
+$P: S \times A_1 \times A_2 \times ... \times A_N \to S$ , The state transition function of the environment.   
+$r_i : S \times A_i \to R$, Reward function for each intelligent agent.
+$o_i : S \to Q_i$, Partial observation information obtained by each intelligent agent from the global state.
+$\rho : S \to [0, 1]$, Initial state distribution.
+$R_i =  {\textstyle \sum_{t=0}^{T} \gamma ^t r^t_i}$, The goal of each agent is to maximize its desired cumulative reward.
+
+Set policy parameters for each agent：$\theta = {\theta_1, ..., \theta_N}$
+Note π = {π_1, ..., π_N} is the policy set of all agents.
+The policy gradient of the expected return for each agent under stochastic strategy:
+$$\bigtriangledown_{\theta_i} J(\theta_i) = E_{s\sim p^\mu , a \sim \pi_i}[log\pi_i(a_i | 0_i) Q^\pi_i(x, a_1, ..., a_N)]$$
+
+among, $Q^\pi_i(x, a1, ..., a_N)]$ is a centralized action value function, its because generally speaking, x = (O,..., o_w) contains observations from all agents. $Q_i$ is also necessary to input the actions of all agents at the moment. 
+Therefore, the premise of $Q_i$ operation is that all agents should give their own observations and corresponding actions at the same time.
+
+For **deterministic strategies**, considering that there are now N continuous strategies $\mu_{\theta}$, the gradient formula for DDPG can be obtained:
+$$\bigtriangledown_{\theta_i} J(\theta_i) = E_{x \sim D }[\bigtriangledown_{\theta_i} \mu_i(o_i) \bigtriangledown_{a_i} Q^\mu_i(x, a_1, ..., a_N)|_{a_i = \mu_i(o_i)}]$$
+
+Where D is the experiential playback pool we use to store data, it stores each data as $(x, {x}', {x}'', ..., {x}^{(n)}, a_1, ..., a_N, r_1, ..., r_N )$.
+In MADDPG, however, **the centralized action value function** can be updated with the following loss function:
+$L(\omega_i) = E_{x, a, r, {x}'}[Q^\mu_i(x, a_1, ..., a_N) - y^2]$
+$y = r_i + \gamma Q^\mu_i(x', a_1', ..., a_N')|a_j' = \mu_j'(o_j)$
+where，$\mu = (\mu_{\theta_1}', ..., \mu_{\theta_N}')$ is a set of target policies used in the update value function with deferred update parameters.
